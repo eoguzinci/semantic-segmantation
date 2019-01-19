@@ -56,6 +56,8 @@ In `main.py`, you'll notice that layers 3, 4 and 7 of VGG16 are utilized in crea
 In section 4.3, and further under header "Skip Architectures for Segmentation" and Figure 3, they note these provided for 8x, 16x and 32x upsampling, respectively. Using each of these in their FCN-8s was the most effective architecture they found. 
 
 ### Results
+#### Losses
+```
 Training ...
 EPOCH 0/20 ...
 GPU Time: 58.966609000000005 s | Loss: 0.6573686599731445
@@ -98,6 +100,28 @@ GPU Time: 993.479199 s | Loss: 0.07777317613363266
 EPOCH 19/20 ...
 GPU Time: 1045.120208 s | Loss: 0.035696156322956085
 Training Finished. Saving test images to: ./runs/1547863927.1221182
+```
+
+#### Output Images
+
+| 12 EPOCHS             |  20 EPOCHS | 50 EPOCHS |
+|:-------------------------:|:-------------------------:|:-------------------------:|
+| ![](runs/12_epochs/um_000000.png)  |  ![](runs/20_epochs/um_000000.png) | ![](runs/50_epochs_FINAL/um_000000.png) |
+| ![](runs/12_epochs/um_000001.png)  |  ![](runs/20_epochs/um_000001.png) | ![](runs/50_epochs_FINAL/um_000001.png) |
+| ![](runs/12_epochs/um_000002.png)  |  ![](runs/20_epochs/um_000002.png) | ![](runs/50_epochs_FINAL/um_000002.png) |
+| ![](runs/12_epochs/um_000003.png)  |  ![](runs/20_epochs/um_000003.png) | ![](runs/50_epochs_FINAL/um_000003.png) |
+| ![](runs/12_epochs/um_000012.png)  |  ![](runs/20_epochs/um_000012.png) | ![](runs/50_epochs_FINAL/um_000012.png) |
+| ![](runs/12_epochs/um_000013.png)  |  ![](runs/20_epochs/um_000013.png) | ![](runs/50_epochs_FINAL/um_000013.png) |
+| ![](runs/12_epochs/um_000014.png)  |  ![](runs/20_epochs/um_000014.png) | ![](runs/50_epochs_FINAL/um_000014.png) |
+| ![](runs/12_epochs/umm_000000.png)  |  ![](runs/20_epochs/umm_000000.png) | ![](runs/50_epochs_FINAL/umm_000000.png) |
+| ![](runs/12_epochs/umm_000001.png)  |  ![](runs/20_epochs/umm_000001.png) | ![](runs/50_epochs_FINAL/umm_000001.png) |
+| ![](runs/12_epochs/umm_000002.png)  |  ![](runs/20_epochs/umm_000002.png) | ![](runs/50_epochs_FINAL/umm_000002.png) |
+
+
+
+
+<!-- ![](path_to_image)
+*image_caption* -->
 
 ### Optional sections
 Within `main.py`, there are a few optional sections you can also choose to implement, but are not required for the project.
