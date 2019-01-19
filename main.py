@@ -147,9 +147,7 @@ def train_nn(sess, epochs, batch_size, get_batches_fn, train_op, cross_entropy_l
                                feed_dict={input_image: image, correct_label: label, keep_prob: 0.5,
                                           learning_rate: 0.0009})
         train_time = time.clock() - start_time
-        print("GPU Time: {} s".format(train_time))
-        print("Loss: {}".format(loss))
-
+        print("GPU Time: {} s | Loss: {}".format(train_time, loss))
 
 # tests.test_train_nn(train_nn)
 
@@ -176,7 +174,8 @@ def run():
 
         # OPTIONAL: Augment Images for better results
         #  https://datascience.stackexchange.com/questions/5224/how-to-prepare-augment-images-for-neural-network
-
+        
+        # TODO: Build NN using load_vgg, layers, and optimize function
         # Simulation parameters
         epochs = 20
         batch_size = 8
@@ -184,14 +183,12 @@ def run():
         # Placeholders
         correct_label = tf.placeholder(tf.int32, [None, None, None, num_classes])
         learning_rate = tf.placeholder(tf.float32, name='learning_rate')
-        
-        # TODO: Build NN using load_vgg, layers, and optimize function
+
         input_image, keep_prob, vgg_layer3_out, vgg_layer4_out, vgg_layer7_out = load_vgg(sess, vgg_path)
 
         output_layer = layers(vgg_layer3_out, vgg_layer4_out, vgg_layer7_out, num_classes)
 
-        logits, loss, train_op = optimize(output_layer, correct_label, learning_rate, num_classes)
-
+        logits, train_op, loss = optimize(output_layer, correct_label, learning_rate, num_classes)
 
         # TODO: Train NN using the train_nn function
 
@@ -199,7 +196,7 @@ def run():
         # config = tf.ConfigProto(allow_soft_placement=True)
         # config.gpu_options.allocator_type = 'BFC'
         # config.gpu_options.per_process_gpu_memory_fraction = 0.40
-        
+
         sess.run(tf.global_variables_initializer())
         train_nn(sess, epochs, batch_size, get_batches_fn, train_op, loss, input_image, correct_label, keep_prob,
                  learning_rate)
